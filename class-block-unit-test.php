@@ -76,8 +76,6 @@ class Block_Unit_Test {
 		$this->_url     = untrailingslashit( plugins_url( '/assets/images', __FILE__ ) );
 
 		// Actions.
-		// add_action( 'admin_init', array( $this, 'create_block_unit_test_page' ) );
-		// add_action( 'admin_init', array( $this, 'update_block_unit_test_page' ) );
 		add_action( 'upgrader_process_complete', array( $this, 'upgrade_completed' ), 10, 2 );
 		add_action( 'plugins_loaded', array( $this, 'suggest_coblocks' ) );
 
@@ -98,6 +96,11 @@ class Block_Unit_Test {
 
 		require_once untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) . 'includes/class-block-unit-test-standart.php';
 
+		// Check for woo-gutenberg-products-block.
+		if ( is_plugin_active( 'woo-gutenberg-products-block/woocommerce-gutenberg-products-block.php' ) ) {
+			require_once untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) . 'includes/class-block-unit-test-wooblocks.php';
+		}
+		
 		// Check for CoBlocks.
 		if ( is_plugin_active( 'coblocks/class-coblocks.php' ) ) {
 			require_once untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) . 'includes/class-block-unit-test-coblocks.php';
