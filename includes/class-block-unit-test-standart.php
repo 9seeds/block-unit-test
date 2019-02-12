@@ -111,7 +111,7 @@ class Block_Unit_Test_Standart {
 	public function standart_content() {
 
 		// Retrieve the asset URLs.
-		$this->_url = untrailingslashit( plugins_url( '../assets/images',__FILE__) );
+		$this->_url =  plugins_url( '../assets/images',__FILE__) ;
 
 		$content = '';
 

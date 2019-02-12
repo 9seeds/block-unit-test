@@ -77,7 +77,7 @@ class Block_Unit_Test {
 
 		// Actions.
 		add_action( 'upgrader_process_complete', array( $this, 'upgrade_completed' ), 10, 2 );
-		add_action( 'plugins_loaded', array( $this, 'suggest_coblocks' ) );
+		// add_action( 'plugins_loaded', array( $this, 'suggest_coblocks' ) );
 
 		// Filters.
 		add_filter( 'plugin_row_meta', array( $this, 'plugin_row_meta' ), 10, 2 );
@@ -104,6 +104,11 @@ class Block_Unit_Test {
 		// Check for CoBlocks.
 		if ( is_plugin_active( 'coblocks/class-coblocks.php' ) ) {
 			require_once untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) . 'includes/class-block-unit-test-coblocks.php';
+		}
+
+		// Check for atomBlocks.
+		if ( is_plugin_active( 'atomic-blocks/atomicblocks.php' ) ) {
+			require_once untrailingslashit( plugin_dir_path( '/', __FILE__ ) ) . 'includes/class-block-unit-test-atomblocks.php';
 		}
 
 		// Includes.
